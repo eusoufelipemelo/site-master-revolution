@@ -37,6 +37,11 @@
   <span class="orbe o3"></span>
   <span class="malha"></span>
 </div>
+<!-- película: grão de filme + vinheta, o que dá o acabamento de cinema -->
+<div class="grao" aria-hidden="true"></div>
+<div class="vinheta" aria-hidden="true"></div>
+<!-- progresso da leitura -->
+<div class="progresso" aria-hidden="true"><i id="progressoBarra"></i></div>
 
 <!-- ===================== NAVBAR ===================== -->
 <header class="nav" id="nav">
@@ -69,7 +74,7 @@
   <div class="wrap hero-grid">
     <div class="hero-txt">
       <p class="eyebrow reveal">Sistema de Implantação de Processos</p>
-      <h1 class="reveal d1">Pare de carregar a loja nas costas.<br /><em>Implante processo.</em></h1>
+      <h1 class="reveal d1" id="heroTitulo"><span class="lin"><span class="w" style="--i:0">Pare</span> <span class="w" style="--i:1">de</span> <span class="w" style="--i:2">carregar</span> <span class="w" style="--i:3">a</span> <span class="w" style="--i:4">loja</span> <span class="w" style="--i:5">nas</span> <span class="w" style="--i:6">costas.</span></span><br /><em class="lin"><span class="w" style="--i:7">Implante</span> <span class="w" style="--i:8">processo.</span></em></h1>
       <p class="hero-sub reveal d2">A plataforma exclusiva dos mentorados do Master Revolution para implantar
         os 10 processos e os 8 pilares na sua loja de móveis planejados, com a equipe
         acompanhando cada passo de perto.</p>
@@ -228,6 +233,20 @@
   </div>
 </section>
 
+<!-- ===================== NÚMEROS ===================== -->
+<section class="numeros" aria-label="O sistema em números">
+  <div class="wrap">
+    <p class="eyebrow reveal">O sistema em números</p>
+    <div class="num-grid">
+      <div class="num reveal"><b><span data-conta="10">0</span></b><span>processos implantados passo a passo</span></div>
+      <div class="num reveal d1"><b><span data-conta="8">0</span></b><span>pilares dentro de cada processo</span></div>
+      <div class="num reveal d2"><b><span data-conta="3">0</span></b><span>idiomas: português, espanhol e inglês</span></div>
+      <div class="num reveal d3"><b><span data-conta="15">0</span><small>min</small></b><span>de validade de cada código de acesso</span></div>
+      <div class="num reveal d4"><b><span data-conta="100">0</span><small>%</small></b><span>na nuvem, de qualquer dispositivo</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== SEGURANÇA ===================== -->
 <section class="sec" id="seguranca">
   <div class="wrap seg-grid">
@@ -332,17 +351,46 @@
     <h2 class="reveal d1">O universo Master Revolution.</h2>
     <p class="sec-sub reveal d2">Mentoria, imersões e o padrão de loja que a metodologia constrói.</p>
   </div>
-  <div class="galeria reveal d2">
-    <figure><img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=900&q=75&auto=format" alt="Cozinha planejada de alto padrão" loading="lazy" /></figure>
-    <figure><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=75&auto=format" alt="Residência com mobiliário planejado" loading="lazy" /></figure>
-    <figure><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=75&auto=format" alt="Sala com marcenaria sob medida" loading="lazy" /></figure>
-    <figure><img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=900&q=75&auto=format" alt="Ambiente integrado com painéis de madeira" loading="lazy" /></figure>
-    <figure><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=75&auto=format" alt="Detalhe de móvel planejado" loading="lazy" /></figure>
-    <figure><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&q=75&auto=format" alt="Estar com marcenaria em destaque" loading="lazy" /></figure>
-    <figure><img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=900&q=75&auto=format" alt="Ferramentas de marcenaria na oficina" loading="lazy" /></figure>
-    <figure><img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=900&q=75&auto=format" alt="Dormitório com guarda-roupa planejado" loading="lazy" /></figure>
+  <div class="wrap galeria reveal d2" id="galeriaGrid">
+    <button class="g-item g-a" type="button" data-foto="photo-1600607687939-ce8a6c25118c" data-alt="Cozinha planejada de alto padrão com ilha">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1100&q=78&auto=format" alt="Cozinha planejada de alto padrão com ilha" loading="lazy" /></button>
+    <button class="g-item" type="button" data-foto="photo-1556228453-efd6c1ff04f6" data-alt="Ambiente com marcenaria em tom escuro">
+      <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=900&q=78&auto=format" alt="Ambiente com marcenaria em tom escuro" loading="lazy" /></button>
+    <button class="g-item g-alto" type="button" data-foto="photo-1622372738946-62e02505feb3" data-alt="Closet planejado sob medida">
+      <img src="https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=900&q=78&auto=format" alt="Closet planejado sob medida" loading="lazy" /></button>
+    <button class="g-item" type="button" data-foto="photo-1616486338812-3dadae4b4ace" data-alt="Sala com painel e marcenaria sob medida">
+      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=78&auto=format" alt="Sala com painel e marcenaria sob medida" loading="lazy" /></button>
+    <button class="g-item" type="button" data-foto="photo-1594026112284-02bb6f3352fe" data-alt="Cozinha com armários planejados claros">
+      <img src="https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=900&q=78&auto=format" alt="Cozinha com armários planejados claros" loading="lazy" /></button>
+    <button class="g-item g-largo" type="button" data-foto="photo-1618221195710-dd6b41faaea6" data-alt="Living de alto padrão com mobiliário sob medida">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1100&q=78&auto=format" alt="Living de alto padrão com mobiliário sob medida" loading="lazy" /></button>
+    <button class="g-item" type="button" data-foto="photo-1611269154421-4e27233ac5c7" data-alt="Home office com escrivaninha sob medida">
+      <img src="https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?w=900&q=78&auto=format" alt="Home office com escrivaninha sob medida" loading="lazy" /></button>
+    <button class="g-item g-alto" type="button" data-foto="photo-1595428774223-ef52624120d2" data-alt="Detalhe de projeto e acabamento">
+      <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=900&q=78&auto=format" alt="Detalhe de projeto e acabamento" loading="lazy" /></button>
+    <button class="g-item" type="button" data-foto="photo-1615874959474-d609969a20ed" data-alt="Dormitório com guarda-roupa planejado">
+      <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=900&q=78&auto=format" alt="Dormitório com guarda-roupa planejado" loading="lazy" /></button>
+    <button class="g-item g-largo" type="button" data-foto="photo-1631679706909-1844bbd07221" data-alt="Ambiente integrado com painéis de madeira">
+      <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1100&q=78&auto=format" alt="Ambiente integrado com painéis de madeira" loading="lazy" /></button>
   </div>
 </section>
+
+<!-- lightbox da galeria -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+  <button class="lb-fechar" id="lbFechar" type="button" aria-label="Fechar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <button class="lb-seta lb-ant" id="lbAnt" type="button" aria-label="Foto anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <figure class="lb-figura">
+    <img id="lbImg" src="" alt="" />
+    <figcaption><span id="lbLegenda"></span><em id="lbContador"></em></figcaption>
+  </figure>
+  <button class="lb-seta lb-prox" id="lbProx" type="button" aria-label="Próxima foto">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </button>
+</div>
 
 <!-- ===================== FAQ ===================== -->
 <section class="sec" id="faq">
