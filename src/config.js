@@ -1,134 +1,119 @@
 /* ============================================================
    PAINEL DE CONTROLE DO SITE
-   Tudo que muda com o tempo mora aqui: número de WhatsApp,
-   textos, fotos, depoimentos e perguntas. Não precisa abrir
-   componente nenhum para editar o conteúdo.
+
+   Todo o conteúdo mora aqui. Editar o site não exige abrir
+   componente nenhum.
+
+   O site é a porta de entrada emocional do empresário que ainda
+   não conhece o Master Revolution. A ordem das seções é a jornada:
+   dor → desejo → identificação → autoridade → prova → solução →
+   ecossistema → decisão. Mexer na ordem quebra a construção.
    ============================================================ */
 
-/* Número do WhatsApp da equipe (DDI+DDD+número, só dígitos).
-   Enquanto estiver vazio, o botão flutuante rola até o formulário
-   e o formulário envia por e-mail. Preencheu, tudo passa a abrir
-   direto no WhatsApp com a mensagem pronta. */
-export const WHATSAPP = ''
-export const EMAIL_EQUIPE = 'contato@escoladeplanejados.com.br'
-export const LINK_SISTEMA = 'https://gestao.masterrevolution.com.br'
+/* ---------- contatos e destinos ---------- */
+export const WHATSAPP = '5511993439026';          // Escola de Planejados
+export const WHATSAPP_TEXTO = 'Olá! Vim pelo site do Master Revolution e quero entender como participar.';
+export const APLICACAO = 'https://escola17.yayforms.link/R81Ma7e';
+export const LINK_SISTEMA = 'https://gestao.masterrevolution.com.br';
 
 export const MENU = [
-  { href: '#sistema',     texto: 'O sistema' },
-  { href: '#seguranca',   texto: 'Segurança' },
-  { href: '#idealizador', texto: 'Idealizador' },
-  { href: '#depoimentos', texto: 'Depoimentos' },
-  { href: '#faq',         texto: 'FAQ' },
-  { href: '#contato',     texto: 'Contato' }
+  { href: '#dores',     texto: 'O problema' },
+  { href: '#depois',    texto: 'O depois' },
+  { href: '#perfis',    texto: 'Para quem é' },
+  { href: '#jonas',     texto: 'Jônas Pastore' },
+  { href: '#programa',  texto: 'O programa' },
+  { href: '#mls',       texto: 'Ecossistema' }
 ]
 
-/* barras do mockup no hero */
-export const MOCK_BARRAS = [
-  { nome: 'Pré-Venda', pct: 92 },
-  { nome: 'Venda',     pct: 78 },
-  { nome: 'Medição',   pct: 64 },
-  { nome: 'Executivo', pct: 41 },
-  { nome: 'Montagem',  pct: 26 }
-]
-export const MOCK_IMPLANTACAO = 68
+/* ---------- 1. abertura: a dor ---------- */
+export const ANCORA = 'A empresa é do tamanho que você é, e não do tamanho que você quer.'
 
-export const FAIXA = ['10 PROCESSOS','8 PILARES','MANUAL OFICIAL','ORGANOGRAMA','PLAYBOOKS','ACOMPANHAMENTO']
-
-export const RECURSOS = [
-  { icone:'livro', destaque:true, titulo:'Manual oficial da sua loja',
-    texto:'O sistema escreve o manual de processos com o seu conteúdo e a sua logomarca. Sai em PDF, pronto para imprimir, treinar equipe nova e encerrar o "aqui cada um faz de um jeito".',
-    tag:'Gerado com a sua marca' },
-  { icone:'organograma', titulo:'Organograma que se monta sozinho',
-    texto:'Você cadastra a equipe e diz quem responde a quem. A hierarquia da loja aparece desenhada, sem arrastar caixinha.' },
-  { icone:'arquivo', titulo:'Playbook por função',
-    texto:'Vendedor, medidor, projetista, montador: cada cargo com o passo a passo do que fazer, editável do seu jeito.' },
-  { icone:'pasta', titulo:'Central de documentos',
-    texto:'Contratos, checklists e os materiais da mentoria guardados na nuvem, disponíveis em qualquer dispositivo.' },
-  { icone:'grafico', titulo:'Evolução acompanhada',
-    texto:'A equipe do Master Revolution enxerga o seu avanço em tempo real e age quando você trava em alguma etapa.' },
-  { icone:'chat', titulo:'Karol, canal direto',
-    texto:'Chat em tempo real dentro do sistema, direto com a equipe da mentoria. Sem ticket, sem espera de dias.' }
+export const DORES = [
+  { icone:'alvo-quebrado', titulo:'Vende sem processo',
+    texto:'Cada venda acontece de um jeito. O resultado do mês depende de quem atendeu, do humor do time e da sorte. Não dá para prever, então não dá para planejar.' },
+  { icone:'margem', titulo:'Espreme a margem para não perder o cliente',
+    texto:'Sem argumento de valor, sobra o desconto. Você vende mais e ganha menos, trabalhando o dobro para entregar o mesmo lucro do ano passado.' },
+  { icone:'refem', titulo:'A empresa depende 100% de você',
+    texto:'Se você sai, a operação trava. Férias viram trabalho remoto, e o negócio que era para dar liberdade virou o emprego mais exigente que você já teve.' },
+  { icone:'cego', titulo:'Toca no escuro',
+    texto:'Sem número, sem sistema, sem visibilidade. Você descobre o problema quando ele já virou prejuízo, e decide no achismo o que deveria decidir no dado.' }
 ]
 
-export const PASSOS = [
-  { n:'01', titulo:'Receba o seu código',
-    texto:'A equipe entrega um código pessoal e intransferível. Ele é a sua chave de entrada no sistema.' },
-  { n:'02', titulo:'Complete o seu perfil',
-    texto:'Seus dados, sua empresa e sua logomarca. É isso que personaliza o manual e os documentos gerados.' },
-  { n:'03', titulo:'Implante os 10 processos',
-    texto:'Etapa por etapa, do Pré-Venda ao Pós-Venda, com tarefas claras e progresso marcado na tela.' },
-  { n:'04', titulo:'Evolua acompanhado',
-    texto:'O painel da mentoria mostra onde você está. Quando trava, a equipe chega antes de você pedir.' }
+/* ---------- 2. o depois: o desejo ---------- */
+export const DEPOIS = [
+  { titulo:'Margem de verdade',
+    texto:'Vender pelo valor que o seu trabalho vale, sem entregar lucro no desconto para fechar o pedido.' },
+  { titulo:'Equipe que converte sem você',
+    texto:'Time treinado no seu método, atendendo no seu padrão, fechando venda enquanto você cuida do que muda o jogo.' },
+  { titulo:'Processo que sustenta o padrão',
+    texto:'A qualidade deixa de depender de quem está de plantão. O padrão vira sistema, não esforço heroico.' },
+  { titulo:'Liberdade geográfica',
+    texto:'A operação roda com você longe. Viajar deixa de ser risco e volta a ser o que deveria: viagem.' },
+  { titulo:'Crescer com eficiência',
+    texto:'Faturar mais sem inchar a estrutura na mesma proporção. Crescimento que cabe no caixa.' }
 ]
 
-export const NUMEROS = [
-  { valor:10,  sufixo:'',    texto:'processos implantados passo a passo' },
-  { valor:8,   sufixo:'',    texto:'pilares dentro de cada processo' },
-  { valor:3,   sufixo:'',    texto:'idiomas: português, espanhol e inglês' },
-  { valor:15,  sufixo:'min', texto:'de validade de cada código de acesso' },
-  { valor:100, sufixo:'%',   texto:'na nuvem, de qualquer dispositivo' }
+/* ---------- 3. para quem é ---------- */
+export const PERFIS = [
+  { n:'01', titulo:'No sufoco', resumo:'Precisa sobreviver e sair do improviso.',
+    texto:'Sair do ciclo de falta de caixa e dos problemas operacionais. Precisa de diretriz e resultado no curto prazo, e começar o processo de longo prazo.' },
+  { n:'02', titulo:'Indo bem', resumo:'Vende, mas quer escalar e ganhar liberdade.',
+    texto:'As coisas acontecem, mas falta método e processo para ter mais liberdade e focar no que realmente muda o jogo.' },
+  { n:'03', titulo:'Voando', resumo:'Quer eficiência máxima e formar líderes.',
+    texto:'O negócio vai muito bem. Agora é hora de ganhar eficiência, formar líderes e ser o maestro da operação, num outro nível de convivência.' }
 ]
 
-export const SEGURANCA = [
-  { icone:'cadeado', titulo:'Código de uso único',
-    texto:'Cada acesso nasce de um código pessoal que expira em 15 minutos e morre depois de usado.' },
-  { icone:'escudo', titulo:'Isolamento por usuário',
-    texto:'A trava fica no banco de dados: um lojista nunca enxerga os dados de outro, nem por engano.' },
-  { icone:'documento', titulo:'LGPD com aceite registrado',
-    texto:'Termos de Uso, Política de Privacidade e consentimento LGPD com data, hora e versão gravadas.' },
-  { icone:'globo', titulo:'Conexão criptografada',
-    texto:'HTTPS em todas as telas. A senha viaja cifrada e nem a equipe consegue ver.' },
-  { icone:'olho', titulo:'Suporte transparente',
-    texto:'Quando a equipe visualiza a sua conta para te ajudar, fica registrado com data, hora e autor.' }
+/* ---------- 4. autoridade ---------- */
+export const TRAJETORIA = [
+  'Frentista','Empacotador','Comprador','Instrutor de treinamento',
+  'Supervisor comercial','Gerente regional','Gerente nacional',
+  'Abertura de capital (IPO)','Casa 46 · o próprio negócio'
 ]
 
-/* TROCAR por depoimentos reais de mentorados antes de divulgar.
-   Estes são exemplos escritos para a construção do site. */
-export const DEPOIMENTOS = [
-  { inicial:'R', nome:'Rodrigo', origem:'Loja de planejados · interior de SP',
-    texto:'Eu era o gargalo de tudo. Hoje a equipe abre o playbook e resolve sem me ligar. O manual com a minha marca foi o dia que a ficha caiu.' },
-  { inicial:'C', nome:'Carla', origem:'Loja de planejados · região Sul',
-    texto:'O organograma me obrigou a decidir quem responde a quem. Parece simples, mas acabou com metade das confusões da minha montagem.' },
-  { inicial:'M', nome:'Marcos', origem:'Loja de planejados · Centro-Oeste',
-    texto:'Travei na etapa de medição e nem precisei pedir ajuda: a equipe viu no painel e me chamou pela Karol. Isso é acompanhamento de verdade.' }
+/* Números conferidos na apresentação oficial do Master Revolution. */
+export const PROVA = [
+  { valor:1,    prefixo:'+', sufixo:' bi', texto:'em negócios gerados' },
+  { valor:1300, prefixo:'+', sufixo:'',    texto:'empresários treinados' },
+  { valor:3,    prefixo:'',  sufixo:'',    texto:'países: Brasil, EUA e México' },
+  { valor:1,    prefixo:'',  sufixo:'º',   texto:'Mastermind do segmento' }
 ]
 
-/* Galeria: `id` é o código da foto no Unsplash. Para usar foto própria,
-   troque por { src:'/assets/minha-foto.jpg' } e coloque o arquivo em public/assets.
-   `formato` monta o bento: 'ancora' ocupa 2x2, 'alto' 1x2, 'largo' 2x1. */
-export const GALERIA = [
-  { id:'photo-1600607687939-ce8a6c25118c', alt:'Cozinha planejada de alto padrão com ilha', formato:'ancora' },
-  { id:'photo-1556228453-efd6c1ff04f6',    alt:'Ambiente com marcenaria em tom escuro' },
-  { id:'photo-1622372738946-62e02505feb3', alt:'Closet planejado sob medida', formato:'alto' },
-  { id:'photo-1616486338812-3dadae4b4ace', alt:'Sala com painel e marcenaria sob medida' },
-  { id:'photo-1594026112284-02bb6f3352fe', alt:'Cozinha com armários planejados claros' },
-  { id:'photo-1618221195710-dd6b41faaea6', alt:'Living de alto padrão com mobiliário sob medida', formato:'largo' },
-  { id:'photo-1611269154421-4e27233ac5c7', alt:'Home office com escrivaninha sob medida' },
-  { id:'photo-1595428774223-ef52624120d2', alt:'Detalhe de projeto e acabamento', formato:'alto' },
-  { id:'photo-1615874959474-d609969a20ed', alt:'Dormitório com guarda-roupa planejado' },
-  { id:'photo-1631679706909-1844bbd07221', alt:'Ambiente integrado com painéis de madeira', formato:'largo' }
+/* ---------- 5. prova social ----------
+   ATENÇÃO: substituir por cases REAIS antes de divulgar.
+   Estes são exemplos de formato, com nome fictício e resultado
+   genérico. Colocar nome de cliente inventado numa página de vendas
+   é prova social falsa — trocar assim que os depoimentos chegarem. */
+export const CASES = [
+  { nome:'—', empresa:'Loja de planejados · Brasil', resultado:'Triplicaram o faturamento',
+    texto:'[Aguardando depoimento real]' },
+  { nome:'—', empresa:'Loja de planejados · México', resultado:'Recorde de faturamento',
+    texto:'[Aguardando depoimento real]' },
+  { nome:'—', empresa:'Loja de planejados · EUA', resultado:'Operação rodando sem o dono',
+    texto:'[Aguardando depoimento real]' }
+]
+/* Enquanto os cases reais não chegam, a seção fica escondida.
+   Vire para true quando preencher CASES acima. */
+export const MOSTRAR_CASES = false
+
+/* ---------- 6. a solução ---------- */
+export const CAMADAS = [
+  { icone:'coroa', titulo:'Para o dono', texto:'Visão, estratégia, método e mentoria. Tudo começa aqui: nenhuma empresa cresce além do tamanho de quem a lidera.' },
+  { icone:'lideranca', titulo:'Para as lideranças', texto:'Formação de líderes e condução de equipe. Quem está no meio do campo precisa saber conduzir, não só executar.' },
+  { icone:'equipe', titulo:'Para a equipe', texto:'Treinamento e implantação prática. O método só vira resultado quando chega em quem atende o cliente todo dia.' }
 ]
 
-export const FAQ = [
-  { p:'Como recebo o meu acesso?',
-    r:'A equipe do Master Revolution te entrega um código pessoal. Ele vale para uma única pessoa e expira em 15 minutos, então você o usa na hora de criar a conta. Depois disso, é só entrar com e-mail e senha.' },
-  { p:'Esqueci minha senha. E agora?',
-    r:'Na tela de login existe o "Esqueci minha senha". Você recebe um link por e-mail e cria uma nova em segundos, sem depender de ninguém.' },
-  { p:'Outros mentorados veem os meus dados?',
-    r:'Nunca. O isolamento é feito no banco de dados: cada conta só alcança o que é dela. Apenas a equipe da mentoria acompanha a sua evolução, e todo acesso de suporte fica registrado.' },
-  { p:'Funciona no celular?',
-    r:'Sim. O sistema roda no navegador, sem instalar nada, e foi desenhado para funcionar bem no computador da loja e no celular do dono.' },
-  { p:'Em quais idiomas o sistema está disponível?',
-    r:'Português, espanhol e inglês. Você troca o idioma em um clique, dentro do próprio sistema.' },
-  { p:'O acesso tem custo à parte?',
-    r:'Não. O sistema é uma ferramenta exclusiva da mentoria Master Revolution: quem é mentorado ativo recebe o acesso como parte do programa.' },
-  { p:'Minha equipe também usa?',
-    r:'O acesso ao sistema é do mentorado. O que a equipe recebe são os materiais gerados nele: o manual oficial, os playbooks por função e os documentos de treinamento, todos com a marca da sua loja.' }
+export const PILARES = [
+  { icone:'clube', titulo:'Clube de Empresários',
+    texto:'Ambiente, frequência e convivência. Com quem você anda determina o tamanho do problema que você acha normal.' },
+  { icone:'metodo', titulo:'Mentoria com Método',
+    texto:'Mentorias em grupo e individuais, sobre um método construído dentro de loja de planejados, não em teoria de sala de aula.' },
+  { icone:'ano', titulo:'12 meses de acompanhamento',
+    texto:'Transformação não acontece em evento. Acontece em acompanhamento, ao longo de um ciclo inteiro do seu negócio.' }
 ]
 
-export const MOMENTOS = [
-  'Estou começando agora',
-  'Vendo bem, mas sem processo',
-  'Quero escalar com equipe',
-  'Sou mentorado e preciso de suporte'
-]
+/* ---------- 7. ecossistema MLS ---------- */
+export const MLS = {
+  titulo:'Mentoring League Society',
+  socios:'Flávio Augusto, Caio Carneiro e Joel Jota',
+  legenda:'Jônas e Carol Pastore com os fundadores da Mentoring League Society'
+}

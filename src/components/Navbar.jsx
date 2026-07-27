@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MENU, LINK_SISTEMA } from '../config.js'
+import { MENU, APLICACAO, LINK_SISTEMA } from '../config.js'
 import Icone from './Icone.jsx'
 
 export default function Navbar({ rolou }) {
@@ -18,11 +18,16 @@ export default function Navbar({ rolou }) {
               {item.texto}
             </a>
           ))}
+          {/* o acesso ao sistema é para quem já é Master: fica no menu, não
+              compete com o CTA de aplicação */}
+          <a className="nav-sistema" href={LINK_SISTEMA} rel="noopener" onClick={() => setAberto(false)}>
+            Já sou Master
+          </a>
         </nav>
 
-        <a className="btn btn-primario nav-cta" href={LINK_SISTEMA} rel="noopener">
-          <Icone nome="entrar" />
-          Acessar Sistema
+        <a className="btn btn-primario nav-cta" href={APLICACAO} target="_blank" rel="noopener">
+          <Icone nome="aplicar" />
+          <span>Fazer aplicação</span>
         </a>
 
         <button

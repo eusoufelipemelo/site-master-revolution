@@ -1,11 +1,9 @@
-import { MENU, WHATSAPP, LINK_SISTEMA } from './config.js'
+import { MENU, WHATSAPP, WHATSAPP_TEXTO, LINK_SISTEMA, APLICACAO } from './config.js'
 import { useRolagem, REDUZ_MOVIMENTO } from './hooks/movimento.js'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
-import Galeria from './components/Galeria.jsx'
-import Faq from './components/Faq.jsx'
-import Contato from './components/Contato.jsx'
-import { Sistema, Jornada, Numeros, Seguranca, Idealizador, Depoimentos, CtaFinal } from './components/Secoes.jsx'
+import { Dores, Depois, Perfis, Jonas, Cases, Programa,
+         Mastermind, Ecossistema, ChamadaFinal } from './components/Secoes.jsx'
 import { IconeWhatsapp } from './components/Icone.jsx'
 
 /* Grão de filme, vinheta e as luzes de fundo: a camada que dá
@@ -27,13 +25,11 @@ function Atmosfera({ y }) {
 }
 
 function Whatsapp() {
-  const destino = WHATSAPP
-    ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Olá! Vim pelo site do Master Revolution e quero saber mais.')}`
-    : '#contato'
-  const externo = WHATSAPP ? { target: '_blank', rel: 'noopener' } : {}
+  const destino = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WHATSAPP_TEXTO)}`
   return (
-    <a className="zap" href={destino} aria-label="Falar no WhatsApp" {...externo}>
+    <a className="zap" href={destino} target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
       <IconeWhatsapp />
+      <span>Falar no WhatsApp</span>
     </a>
   )
 }
@@ -44,12 +40,13 @@ function Rodape() {
       <div className="wrap rodape-in">
         <div className="rodape-marca">
           <img src="/assets/logo-horizontal.svg" alt="Master Revolution" width="180" height="36" loading="lazy" />
-          <p>Sistema de Implantação de Processos para lojas de móveis planejados.</p>
+          <p>Mentoria e método para donos de loja de móveis planejados que querem
+             crescer com margem, equipe e liberdade.</p>
         </div>
         <nav className="rodape-links" aria-label="Links do rodapé">
-          {MENU.filter(m => m.href !== '#contato' && m.href !== '#depoimentos')
-               .map(m => <a key={m.href} href={m.href}>{m.texto}</a>)}
-          <a href={LINK_SISTEMA} rel="noopener">Acessar Sistema</a>
+          {MENU.map(m => <a key={m.href} href={m.href}>{m.texto}</a>)}
+          <a href={APLICACAO} target="_blank" rel="noopener">Fazer minha aplicação</a>
+          <a href={LINK_SISTEMA} rel="noopener">Já sou Master · acessar sistema</a>
         </nav>
       </div>
       <div className="wrap rodape-base">
@@ -72,16 +69,15 @@ export default function App() {
 
       <main id="topo">
         <Hero />
-        <Sistema />
-        <Jornada />
-        <Numeros />
-        <Seguranca />
-        <Idealizador />
-        <Depoimentos />
-        <Galeria />
-        <Faq />
-        <Contato />
-        <CtaFinal />
+        <Dores />
+        <Depois />
+        <Perfis />
+        <Jonas />
+        <Cases />
+        <Programa />
+        <Mastermind />
+        <Ecossistema />
+        <ChamadaFinal />
       </main>
 
       <Rodape />
