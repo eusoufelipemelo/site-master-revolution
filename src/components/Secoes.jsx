@@ -111,7 +111,10 @@ export function Jonas() {
     <section className="sec sec-alt" id="jonas">
       <div className="wrap jonas-grid">
         <Reveal as="figure" className="jonas-foto">
-          <img src="/assets/jonas-pastore.jpg" alt="Jônas Pastore" loading="lazy" width="533" height="800" />
+          <img src="/assets/jonas-pastore.webp"
+               srcSet="/assets/jonas-pastore.webp 560w, /assets/jonas-pastore@2x.webp 1120w"
+               sizes="(max-width:1080px) 420px, 30vw"
+               alt="Jônas Pastore" loading="lazy" decoding="async" width="560" height="841" />
           <figcaption><b>Jônas Pastore</b><span>Fundador do Master Revolution</span></figcaption>
         </Reveal>
 
@@ -244,7 +247,10 @@ export function Ecossistema() {
         </Reveal>
 
         <Reveal as="figure" className="mls-foto" atraso={0.26}>
-          <img src="/assets/mls-socios.jpg" alt={MLS.legenda} loading="lazy" />
+          <img src="/assets/mls-socios.webp"
+               srcSet="/assets/mls-socios.webp 1140w, /assets/mls-socios@2x.webp 1600w"
+               sizes="(max-width:900px) 100vw, 1140px"
+               alt={MLS.legenda} loading="lazy" decoding="async" width="1140" height="641" />
           <figcaption>{MLS.legenda}</figcaption>
         </Reveal>
       </div>

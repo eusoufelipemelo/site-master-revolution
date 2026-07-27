@@ -4,7 +4,17 @@
    puxado nos reveals (blur que assenta), respiro generoso
    entre cenas e números que ganham vida ao entrar em quadro.
    Identidade: dark premium, azul da marca, detalhes âmbar.
-   Tipografia: Sora (títulos) + Instrument Sans (texto).
+
+   TIPOGRAFIA: família Geist inteira (Sans + Mono), auto-hospedada.
+   Sem serifada, o contraste editorial passa a vir de três lugares:
+     1. PESO  — display em 300 num corpo enorme; texto em 400/500;
+                rótulos em 600/700. A distância entre 300 e 700 é o
+                que antes era a distância entre serifada e sem-serifa.
+     2. TRACKING ÓPTICO — quanto maior o corpo, mais negativo
+                (-.045em no display, +.20em nos rótulos miúdos).
+     3. GEIST MONO — a camada estrutural. Regra da casa:
+                MONO para o que é número, código ou rótulo;
+                SANS para o que é linguagem.
    ============================================================ */
 :root{
   /* paleta oficial: navy · mid-blue · sky */
@@ -17,13 +27,19 @@
   --ciano:#4d9fd6; --royal:#1c6fb5; --fundo-royal:#0a2f5c;
   --ambar:#e8a33d; --ok:#37d99a;
   --grad:linear-gradient(135deg,#0a2f5c,#1c6fb5,#4d9fd6);
+  /* o --grad serve para FUNDO. em TEXTO ele reprova: o navy do início
+     dá 1,49:1 sobre o fundo e a primeira palavra some. este aqui começa
+     onde o azul já é legível (5,7:1) e mantém a marca. */
+  --grad-texto:linear-gradient(135deg,#3d8fd0,#67b4e6,#9fd4f5);
   --sombra:0 24px 60px -28px rgba(0,0,0,.85);
   --r:18px;
-  --f-titulo:"Sora",sans-serif;
-  --f-texto:"Instrument Sans",sans-serif;
-  /* serifada só para as frases-âncora: o contraste com a Sora é o que
-     tira o texto do registro institucional e dá peso de manifesto */
-  --f-editorial:"Instrument Serif",Georgia,serif;
+  /* uma família só, papéis diferentes. os três aliases continuam
+     existindo porque nomeiam a INTENÇÃO de cada trecho de texto. */
+  --geist:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-titulo:var(--geist);
+  --f-texto:var(--geist);
+  --f-editorial:var(--geist);
+  --f-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   /* a curva de tudo que se move: entra decidido, assenta macio */
   --cine:cubic-bezier(.16,1,.3,1);
   color-scheme:dark;
@@ -31,7 +47,10 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
 body{background:var(--bg);color:var(--texto);font-family:var(--f-texto);
-  font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  font-size:17px;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* parágrafos sem linha órfã; títulos com quebra equilibrada */
+p{text-wrap:pretty}
+h1,h2,h3,h4{text-wrap:balance}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit}
@@ -70,7 +89,7 @@ button{font-family:inherit}
 
 /* ---------- botões ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  font-weight:700;font-size:14.5px;border-radius:12px;padding:12px 20px;
+  font-weight:600;font-size:14.5px;letter-spacing:-.01em;border-radius:12px;padding:12px 20px;
   border:0;cursor:pointer;transition:filter .2s,background .2s,border-color .2s,transform .2s;
   white-space:nowrap;position:relative;overflow:hidden}
 .btn svg{width:17px;height:17px;flex:0 0 auto}
@@ -93,7 +112,7 @@ button{font-family:inherit}
 .nav.rolou .nav-in{padding:11px 0}
 .nav-logo img{width:188px;height:auto;display:block}
 .nav-links{display:flex;gap:4px;margin-left:auto}
-.nav-links a{font-size:13.5px;font-weight:600;color:var(--suave);padding:9px 13px;border-radius:9px;transition:color .18s,background .18s}
+.nav-links a{font-size:14px;font-weight:500;letter-spacing:-.01em;color:var(--suave);padding:9px 13px;border-radius:9px;transition:color .18s,background .18s}
 .nav-links a:hover{color:var(--tinta);background:var(--superficie)}
 .nav-burger{display:none;flex-direction:column;gap:5px;margin-left:auto;background:transparent;border:1px solid var(--linha-2);border-radius:10px;padding:11px 10px;cursor:pointer}
 .nav-burger span{width:20px;height:2px;background:var(--tinta);border-radius:2px;transition:transform .25s,opacity .25s}
@@ -105,16 +124,26 @@ button{font-family:inherit}
 .hero{min-height:100svh;display:flex;align-items:center;position:relative;
   padding:clamp(120px,16vh,180px) 0 clamp(90px,12vh,130px)}
 .hero-in{max-width:1000px}
-.eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+/* rótulo de seção: Mono. é o que dá o registro técnico/editorial
+   que a serifada dava por contraste de forma. peso 500 porque mono
+   pesada empasta nos contornos fechados da Geist Mono. */
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;
   color:var(--ceu);margin-bottom:22px;display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:"";width:26px;height:2px;background:var(--grad);border-radius:2px}
 .eyebrow.centro{justify-content:center}
 
-/* a serifada é o que tira a frase do registro institucional */
-.hero-ancora{font-family:var(--f-editorial);font-weight:400;
-  font-size:clamp(38px,7vw,86px);line-height:1.02;letter-spacing:-.02em;color:var(--tinta)}
+/* PESO 300 num corpo enorme: numa geométrica, é o traço fino em
+   escala grande que produz o ar editorial (a serifada fazia isso pela
+   forma). tracking bem negativo porque a Geist abre demais no display.
+   entrelinha 1.06 e não 1.0: pt-BR tem til e cedilha, e em 1.0 o "ã"
+   de uma linha encosta no "ç" da linha de cima. */
+.hero-ancora{font-family:var(--f-editorial);font-weight:300;
+  font-size:clamp(40px,7.4vw,92px);line-height:1.06;letter-spacing:-.045em;color:var(--tinta)}
 .hero-ancora .lin{display:inline}
-.hero-ancora em{font-style:italic;color:var(--ceu)}
+/* a Geist tem itálico DE VERDADE (não é oblíquo sintetizado),
+   então a ênfase da frase sobrevive à troca de família */
+.hero-ancora em{font-style:italic;font-weight:300;color:var(--ceu)}
 .hero-ancora .w{display:inline-block;opacity:0;transform:translateY(.5em) rotate(.8deg);filter:blur(7px);
   transition:opacity .8s var(--cine),transform .9s var(--cine),filter .8s var(--cine);
   transition-delay:calc(.2s + var(--i) * .07s)}
@@ -136,9 +165,11 @@ button{font-family:inherit}
 /* ---------- seções ---------- */
 .sec{padding:clamp(96px,13vh,160px) 0;position:relative}
 .sec-alt{background:linear-gradient(180deg,rgba(11,23,37,.6),rgba(11,23,37,0));border-top:1px solid var(--linha)}
-h2{font-family:var(--f-titulo);font-size:clamp(28px,3.7vw,46px);line-height:1.13;
-  letter-spacing:-.025em;color:var(--tinta);font-weight:800;max-width:820px}
-h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* 600 e não 800: na Geist o 800 grita, o 600 tem autoridade.
+   quem carrega o peso da hierarquia aqui é o tracking, não a gordura. */
+h2{font-family:var(--f-titulo);font-size:clamp(29px,3.8vw,48px);line-height:1.12;
+  letter-spacing:-.035em;color:var(--tinta);font-weight:600;max-width:820px}
+h2 em{font-style:normal;background:var(--grad-texto);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sec-sub{margin-top:20px;font-size:16.5px;color:var(--suave);max-width:640px;line-height:1.7}
 
 /* ---------- 1. dores ---------- */
@@ -151,12 +182,13 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 .dor-ico{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;margin-bottom:20px;
   background:rgba(232,163,61,.1);border:1px solid rgba(232,163,61,.24);color:var(--ambar)}
 .dor-ico svg{width:21px;height:21px}
-.dor-card h3{font-family:var(--f-titulo);font-size:19px;color:var(--tinta);font-weight:700;
-  letter-spacing:-.01em;margin-bottom:11px}
+.dor-card h3{font-family:var(--f-titulo);font-size:19.5px;color:var(--tinta);font-weight:600;
+  letter-spacing:-.02em;margin-bottom:11px}
 .dor-card p{font-size:14.5px;color:var(--suave);line-height:1.7}
 .dor-fecho{margin-top:30px;padding:22px 26px;border-radius:var(--r);
   border-left:3px solid var(--ceu);background:var(--superficie)}
-.dor-fecho p{font-family:var(--f-editorial);font-size:clamp(19px,2.2vw,25px);color:var(--tinta);line-height:1.4}
+.dor-fecho p{font-family:var(--f-editorial);font-weight:300;font-size:clamp(20px,2.3vw,27px);
+  color:var(--tinta);line-height:1.38;letter-spacing:-.025em}
 
 /* ---------- 2. o depois ---------- */
 .depois-lista{list-style:none;margin-top:clamp(46px,6vh,68px);display:flex;flex-direction:column;gap:2px;
@@ -168,8 +200,8 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 .dp-marca{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;flex:0 0 auto;margin-top:2px;
   background:rgba(55,217,154,.12);border:1px solid rgba(55,217,154,.3);color:var(--ok)}
 .dp-marca svg{width:15px;height:15px;stroke-width:2.6}
-.depois-lista b{display:block;font-family:var(--f-titulo);font-size:18px;color:var(--tinta);
-  font-weight:700;margin-bottom:6px}
+.depois-lista b{display:block;font-family:var(--f-titulo);font-size:18.5px;color:var(--tinta);
+  font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
 .depois-lista span{display:block;font-size:14.5px;color:var(--suave);line-height:1.65}
 
 /* ---------- 3. perfis ---------- */
@@ -181,9 +213,10 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 .perfil-card::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;
   background:radial-gradient(340px 200px at 50% 0%,rgba(28,111,181,.2),transparent 70%)}
 .perfil-card:hover::after{opacity:1}
-.pf-n{display:block;font-family:var(--f-titulo);font-size:34px;font-weight:800;letter-spacing:-.03em;
-  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px}
-.perfil-card h3{font-family:var(--f-titulo);font-size:22px;color:var(--tinta);font-weight:700;margin-bottom:8px}
+.pf-n{display:block;font-family:var(--f-mono);font-size:30px;font-weight:500;letter-spacing:-.02em;
+  background:var(--grad-texto);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px}
+.perfil-card h3{font-family:var(--f-titulo);font-size:22px;color:var(--tinta);font-weight:600;
+  letter-spacing:-.025em;margin-bottom:8px}
 .pf-resumo{font-size:14px;color:var(--ceu);font-weight:600;margin-bottom:14px}
 .pf-texto{font-size:14px;color:var(--suave);line-height:1.7}
 
@@ -196,8 +229,10 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 .jonas-foto figcaption{position:absolute;left:16px;right:16px;bottom:16px;
   background:rgba(5,10,18,.8);backdrop-filter:blur(10px);border:1px solid var(--linha-2);
   border-radius:14px;padding:13px 17px}
-.jonas-foto figcaption b{display:block;font-family:var(--f-titulo);font-size:16px;color:var(--tinta)}
-.jonas-foto figcaption span{font-size:11.5px;color:var(--ceu);letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.jonas-foto figcaption b{display:block;font-family:var(--f-titulo);font-size:16.5px;font-weight:600;
+  letter-spacing:-.02em;color:var(--tinta)}
+.jonas-foto figcaption span{font-family:var(--f-mono);font-size:11px;color:var(--ceu);letter-spacing:.14em;
+  text-transform:uppercase;font-weight:500}
 .jonas-txt>p{margin-top:18px;font-size:15.5px;color:var(--suave);line-height:1.75}
 .jonas-txt b{color:var(--tinta)}
 .trajetoria{list-style:none;margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
@@ -205,7 +240,7 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
   background:var(--superficie);border:1px solid var(--linha);border-radius:999px;padding:8px 14px;
   transition:border-color .2s,color .2s}
 .trajetoria li:hover{border-color:var(--linha-2);color:var(--tinta)}
-.trajetoria li span{font-family:var(--f-titulo);font-size:10px;font-weight:800;color:var(--ceu);letter-spacing:.06em}
+.trajetoria li span{font-family:var(--f-mono);font-size:10.5px;font-weight:500;color:var(--ceu);letter-spacing:.04em}
 .trajetoria li:last-child{background:rgba(28,111,181,.14);border-color:var(--linha-2);color:var(--tinta);font-weight:600}
 .jonas-hoje{margin-top:26px;padding:20px 22px;border-radius:14px;
   background:var(--superficie);border:1px solid var(--linha)}
@@ -215,9 +250,14 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 .prova-faixa{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
   margin-top:clamp(56px,7vh,84px);padding-top:40px;border-top:1px solid var(--linha)}
 .prova-item{text-align:center}
-.prova-item b{display:block;font-family:var(--f-titulo);font-weight:800;
-  font-size:clamp(34px,4.4vw,54px);line-height:1;letter-spacing:-.03em;
-  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+/* Aqui NÃO entra mono: o número vem colado a sufixo ("bi", "º") e em
+   monoespaçada essas letras ganham largura fixa e ficam desengonçadas.
+   A Geist Sans tem 'tnum', que trava a largura só dos DÍGITOS — resolve
+   o tremor da contagem sem estragar o sufixo. */
+.prova-item b{display:block;font-family:var(--f-titulo);font-weight:500;
+  font-size:clamp(34px,4.4vw,54px);line-height:1;letter-spacing:-.035em;
+  font-feature-settings:"tnum";
+  background:var(--grad-texto);-webkit-background-clip:text;background-clip:text;color:transparent;
   font-variant-numeric:tabular-nums}
 .prova-item span{display:block;margin-top:12px;font-size:13px;color:var(--suave);line-height:1.5}
 
@@ -229,7 +269,7 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 .case:hover{border-color:var(--linha-2);transform:translateY(-5px)}
 .estrelas{display:flex;gap:3px}
 .estrelas svg{width:15px;height:15px;fill:var(--ambar)}
-.case-res{font-family:var(--f-titulo);font-size:19px;color:var(--ok);font-weight:800;letter-spacing:-.01em}
+.case-res{font-family:var(--f-mono);font-size:18px;color:var(--ok);font-weight:600;letter-spacing:-.02em}
 .case blockquote{font-size:14.5px;color:var(--texto);line-height:1.7;flex:1}
 .case figcaption{padding-top:16px;border-top:1px solid var(--linha)}
 .case figcaption b{display:block;font-size:14px;color:var(--tinta)}
@@ -244,7 +284,8 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 .cm-ico{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;margin-bottom:20px;
   background:var(--superficie-2);border:1px solid var(--linha-2);color:var(--ceu)}
 .cm-ico svg{width:22px;height:22px}
-.camada h3{font-family:var(--f-titulo);font-size:19px;color:var(--tinta);font-weight:700;margin-bottom:10px}
+.camada h3{font-family:var(--f-titulo);font-size:19.5px;color:var(--tinta);font-weight:600;
+  letter-spacing:-.02em;margin-bottom:10px}
 .camada p{font-size:14.5px;color:var(--suave);line-height:1.7}
 
 .pilar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
@@ -254,7 +295,8 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 .pl-ico{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;flex:0 0 auto;
   background:rgba(28,111,181,.16);color:var(--ceu)}
 .pl-ico svg{width:18px;height:18px}
-.pilar h4{font-family:var(--f-titulo);font-size:16px;color:var(--tinta);font-weight:700;margin-bottom:7px}
+.pilar h4{font-family:var(--f-titulo);font-size:16.5px;color:var(--tinta);font-weight:600;
+  letter-spacing:-.015em;margin-bottom:7px}
 .pilar p{font-size:13.5px;color:var(--suave);line-height:1.65}
 
 /* ---------- 7. mastermind: o momento de destaque ---------- */
@@ -263,9 +305,9 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 .mastermind::before{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(760px 420px at 50% 40%,rgba(28,111,181,.28),transparent 72%)}
 .mastermind .eyebrow{justify-content:center;color:var(--ceu)}
-.mm-frase{font-family:var(--f-editorial);font-size:clamp(28px,4.6vw,58px);line-height:1.14;
-  letter-spacing:-.02em;color:var(--tinta);max-width:940px;margin:0 auto}
-.mm-frase em{font-style:italic;color:var(--ceu)}
+.mm-frase{font-family:var(--f-editorial);font-weight:300;font-size:clamp(29px,4.8vw,62px);line-height:1.1;
+  letter-spacing:-.04em;color:var(--tinta);max-width:940px;margin:0 auto}
+.mm-frase em{font-style:italic;font-weight:300;color:var(--ceu)}
 .mm-txt{margin:34px auto 0;max-width:620px;font-size:16px;color:var(--suave);line-height:1.75}
 
 /* ---------- 8. MLS ---------- */
@@ -279,8 +321,8 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 .cta-final{padding:clamp(110px,15vh,190px) 0;text-align:center;position:relative;overflow:hidden}
 .cta-final::before{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(800px 440px at 50% 110%,rgba(10,47,92,.75),transparent 72%)}
-.cta-ancora{font-family:var(--f-editorial);font-size:clamp(30px,4.8vw,60px);line-height:1.1;
-  letter-spacing:-.02em;color:var(--tinta);max-width:900px;margin:0 auto}
+.cta-ancora{font-family:var(--f-editorial);font-weight:300;font-size:clamp(31px,5vw,64px);line-height:1.08;
+  letter-spacing:-.04em;color:var(--tinta);max-width:900px;margin:0 auto}
 .cta-txt{margin:32px auto 0;max-width:560px;font-size:16px;color:var(--suave);line-height:1.7}
 .cta-botoes{display:flex;justify-content:center;gap:14px;margin-top:38px;flex-wrap:wrap}
 .cta-nota{margin-top:20px;font-size:12.5px;color:var(--suave-2)}
@@ -343,6 +385,21 @@ h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;back
 }
 @media(max-width:640px){
   .wrap,.wrap-estreito{width:calc(100% - 36px)}
+
+  /* LEITURA NO CELULAR — o público aqui é dono de loja de 40 a 60 anos
+     lendo no telefone. 13,5px de corpo, que passa no desktop a meio metro
+     de distância, vira esforço na mão. Tudo que é texto corrido sobe. */
+  .dor-card p,.depois-lista span,.pf-texto,.camada p,
+  .pilar p,.jonas-txt>p,.jonas-hoje p,.case blockquote{font-size:15.5px;line-height:1.68}
+  .sec-sub,.hero-sub,.cta-txt,.mm-txt{font-size:16px}
+
+  /* ALVO DE TOQUE — mínimo de 44px nos controles mais usados.
+     o CTA e o hambúrguer estavam em 43x37 e 42x40. */
+  .nav-cta{min-width:44px;min-height:44px;padding:10px 14px}
+  .nav-burger{min-width:44px;min-height:44px;justify-content:center;align-items:center}
+  .nav-links a{padding:15px 16px}
+  .rodape-links a,.rodape-base a{padding:11px 0;display:inline-block}
+  .nav-logo{display:flex;align-items:center;min-height:44px}
   .sec{padding:clamp(76px,11vh,104px) 0}
   .hero{padding-top:132px}
   .camada-grid,.pilar-grid,.case-grid{grid-template-columns:1fr}

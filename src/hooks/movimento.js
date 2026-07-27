@@ -18,6 +18,17 @@ export function useEmQuadro({ limiar = 0.16, margem = '0px 0px -40px 0px', umaVe
   useEffect(() => {
     const el = ref.current
     if (!el) return
+
+    /* Rede de segurança: o conteúdo nasce em opacity:0 e só o observador
+       o revela. Se o observador não existir ou não reportar, a página fica
+       em branco — inaceitável numa página de vendas. Duas saídas:
+       1) sem suporte a IntersectionObserver, mostra tudo na hora;
+       2) se o elemento JÁ está no quadro na montagem, revela sem esperar
+          o observador (que fica congelado enquanto a aba está oculta). */
+    if (typeof IntersectionObserver === 'undefined') { setEmQuadro(true); return }
+    const r = el.getBoundingClientRect()
+    if (r.top < (window.innerHeight || 0) && r.bottom > 0) setEmQuadro(true)
+
     const io = new IntersectionObserver(([entrada]) => {
       if (entrada.isIntersecting) {
         setEmQuadro(true)
@@ -43,6 +54,13 @@ export function useContagem(alvo) {
 
   useEffect(() => {
     if (!emQuadro || REDUZ_MOVIMENTO) return
+
+    /* O número nasce em 0 e só sobe pelo requestAnimationFrame. Com a aba
+       oculta o rAF fica congelado, e quem chegasse na página nesse estado
+       leria "+0 bi" — pior do que não animar. Sem quadro para animar,
+       entrega o valor final direto. */
+    if (typeof document !== 'undefined' && document.hidden) { setN(alvo); return }
+
     let raf
     const inicio = performance.now()
     const dur = Math.min(2000, 900 + alvo * 8)   // número maior, contagem mais longa
